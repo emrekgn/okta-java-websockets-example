@@ -23,3 +23,8 @@ function disconnect() {
     }
     console.log("Disconnected");
 }
+
+
+function toggleMute(){
+    Tone.context.resume();
+}
