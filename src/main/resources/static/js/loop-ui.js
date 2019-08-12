@@ -13,6 +13,7 @@ button1.on('change', function(v) {
     } else {
         this.player.stop();
     }
+    sendEvent("button1", v);
 })
 
 
@@ -30,6 +31,7 @@ button2.on('change', function(v) {
     } else {
         this.player.stop();
     }
+    sendEvent("button2", v);
 })
 
 
@@ -49,6 +51,7 @@ button3.on('change', function(v) {
     } else {
         this.player.stop();
     }
+    sendEvent("button3", v);
 })
 
 
@@ -69,6 +72,7 @@ button4.on('change', function(v) {
     } else {
         this.player.stop();
     }
+    sendEvent("button4", v);
 })
 
 
@@ -87,6 +91,7 @@ button5.on('change', function(v) {
     } else {
         this.player.stop();
     }
+    sendEvent("button5", v);
 })
 
 
@@ -105,6 +110,7 @@ button6.on('change', function(v) {
     } else {
         this.player.stop();
     }
+    sendEvent("button6", v);
 })
 
 
@@ -123,6 +129,7 @@ button7.on('change', function(v) {
     } else {
         this.player.stop();
     }
+    sendEvent("button7", v);
 })
 
 
@@ -141,6 +148,7 @@ button8.on('change', function(v) {
     } else {
         this.player.stop();
     }
+    sendEvent("button8", v);
 })
 
 var button9 = new Nexus.Button('#button-9',{
@@ -158,4 +166,5 @@ button9.on('change', function(v) {
     } else {
         this.player.stop();
     }
+    sendEvent("button9", v);
 })
