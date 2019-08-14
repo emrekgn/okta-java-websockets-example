@@ -4,7 +4,7 @@ var stompClient = null;
 function connect() {
     var socket = new SockJS('/looping');
     stompClient = Stomp.over(socket);
-    stompClient.connect({}, function (frame) {
+    stompClient.connect({"Authorization": "Bearer 123"}, function (frame) {
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/loops', function (message) {
             console.log(loopEvent);
