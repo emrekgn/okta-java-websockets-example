@@ -8,6 +8,8 @@
 
     <logger name="org.springframework.web.socket" level="TRACE" />
 
+    <logger name="org.springframework.security" level="TRACE" />
+
     <root level="DEBUG">
         <appender-ref ref="STDOUT" />
     </root>

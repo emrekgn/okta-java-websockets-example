@@ -1,22 +1,53 @@
 package com.okta.developer.websockets;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfiguration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationManager;
+import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
+import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
 
-
+@EnableResourceServer
 @Configuration
-public class ResourceServerSecurityConfig extends ResourceServerConfiguration {
+public class ResourceServerSecurityConfig extends ResourceServerConfigurerAdapter {
+
+    @Value("${okta.clientId}")
+    private String clientId;
+
+    @Value("${okta.clientSecret}")
+    private String clientSecret;
+
+    @Value("${okta.tokenEndpointURL}")
+    private String tokenEndpoingURL;
+
+    @Value("${okta.resourceId}")
+    private String resourceId;
+
+
 
     @Override
-    @Bean
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
+    public void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests().anyRequest().authenticated();
     }
 
-    @Override
-    public int getOrder() {
-        return 4;
+    @Bean
+    public ResourceServerTokenServices tokenServices(){
+        RemoteTokenServices tokenServices = new RemoteTokenServices();
+        tokenServices.setClientId(clientId);
+        tokenServices.setClientSecret(clientSecret);
+        tokenServices.setCheckTokenEndpointUrl(tokenEndpoingURL);
+        return  tokenServices;
+    }
+
+    @Bean
+    public OAuth2AuthenticationManager authenticationManager(){
+        OAuth2AuthenticationManager authenticationManager = new OAuth2AuthenticationManager();
+        authenticationManager.setResourceId(resourceId);
+        authenticationManager.setTokenServices(tokenServices());
+
+        return  authenticationManager;
     }
 }
