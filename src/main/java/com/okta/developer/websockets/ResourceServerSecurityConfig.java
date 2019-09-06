@@ -14,16 +14,16 @@ import org.springframework.security.oauth2.provider.token.ResourceServerTokenSer
 @Configuration
 public class ResourceServerSecurityConfig extends ResourceServerConfigurerAdapter {
 
-    @Value("${okta.clientId}")
+    @Value("${okta.client-id}")
     private String clientId;
 
-    @Value("${okta.clientSecret}")
+    @Value("${okta.client-secret}")
     private String clientSecret;
 
-    @Value("${okta.tokenEndpointURL}")
+    @Value("${okta.token-endpoint-url}")
     private String tokenEndpoingURL;
 
-    @Value("${okta.resourceId}")
+    @Value("${okta.resource-id}")
     private String resourceId;
 
 

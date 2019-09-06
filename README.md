@@ -46,10 +46,10 @@ var authClient = new OktaAuth({
 ### Run with Maven
 
 ```shell
-OKTA_CLIENTID=<service_client_id> \
-OKTA_CLIENTSECRET=<service_client_secret> \
-OKTA_TOKENENDPOINTURL=<org_url>/oauth2/v1/introspect \
-OKTA_RESOURCEID=<org_url> \
+OKTA_CLIENT_ID=<service_client_id> \
+OKTA_CLIENT_SECRET=<service_client_secret> \
+OKTA_TOKEN_ENDPOINT_URL=<org_url>/oauth2/v1/introspect \
+OKTA_RESOURCE_ID=<org_url> \
 ./mvnw spring-boot:run
 ```
 
