@@ -1,3 +1,9 @@
 okta:
-  tokenEndpointURL: https://dev-239352.okta.com/oauth2/v1/introspect
-  resourceId: https://dev-239352.okta.com
+  oauth2:
+    clientId: 0oa156d54lKhXH7Om357
+    clientSecret: JkQ2yGNbZxciY7KhT2aXWiJhX3nGXQ5SVZPUbDYB
+    issuer: https://dev-239352.okta.com/oauth2
+    audience: http://localhost:8080
+
+
+

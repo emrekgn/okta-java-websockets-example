@@ -4,7 +4,7 @@ var authClient = new OktaAuth({
   redirectUri: 'http://localhost:8080'
 });
 
-
+/**
 var accessToken = authClient.tokenManager.get('accessToken')
     .then(accessToken => {
       // If ID Token exists, output it to the console
@@ -32,3 +32,31 @@ var accessToken = authClient.tokenManager.get('accessToken')
       }
     });
 
+**/
+ var idToken = authClient.tokenManager.get('idToken')
+    .then(idToken => {
+      // If ID Token exists, output it to the console
+      if (idToken) {
+        console.log(idToken)
+      // If ID Token isn't found, try to parse it from the current URL
+      }
+      else if (location.hash) {
+        authClient.token.parseFromUrl().then(function success(res){
+            console.log(res);
+            var accessToken = res[0];
+            var idToken = res[1]
+
+            authClient.tokenManager.add('accessToken', accessToken);
+            authClient.tokenManager.add('idToken', idToken);
+            console.log(idToken)
+
+            window.location.hash='';
+        });
+      }
+      else {
+        // You're not logged in, you need a sessionToken
+        authClient.token.getWithRedirect({
+          responseType: ['token','id_token']
+        });
+      }
+    });

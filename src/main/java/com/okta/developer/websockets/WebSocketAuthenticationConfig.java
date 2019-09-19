@@ -13,8 +13,12 @@ import org.springframework.messaging.simp.stomp.StompCommand;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.messaging.support.ChannelInterceptor;
 import org.springframework.messaging.support.MessageHeaderAccessor;
+import org.springframework.security.authentication.AbstractAuthenticationToken;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationManager;
+import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
@@ -28,7 +32,7 @@ public class WebSocketAuthenticationConfig implements WebSocketMessageBrokerConf
     private static final Logger logger = LoggerFactory.getLogger(WebSocketAuthenticationConfig.class);
 
     @Autowired
-    private OAuth2AuthenticationManager authenticationManager;
+    private JwtDecoder jwtDecoder;
 
     @Override
     public void configureClientInboundChannel(ChannelRegistration registration) {
@@ -42,7 +46,9 @@ public class WebSocketAuthenticationConfig implements WebSocketMessageBrokerConf
                     logger.debug("X-Authorization: {}", authorization);
 
                     String accessToken = authorization.get(0).split(" ")[1];
-                    Authentication authentication = authenticationManager.authenticate(new JwtAuthenticationToken(accessToken));
+                    Jwt jwt = jwtDecoder.decode(accessToken);
+                    JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
+                    AbstractAuthenticationToken authentication = converter.convert(jwt);
                     accessor.setUser(authentication);
 
 

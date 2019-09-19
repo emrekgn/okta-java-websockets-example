@@ -18,4 +18,5 @@ public class WebSocketSecurityConfig extends AbstractSecurityWebSocketMessageBro
         return true;
     }
 
+
 }
