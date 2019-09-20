@@ -48,7 +48,7 @@ public class WebSocketAuthenticationConfig implements WebSocketMessageBrokerConf
                     String accessToken = authorization.get(0).split(" ")[1];
                     Jwt jwt = jwtDecoder.decode(accessToken);
                     JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
-                    AbstractAuthenticationToken authentication = converter.convert(jwt);
+                    Authentication authentication = converter.convert(jwt);
                     accessor.setUser(authentication);
 
 

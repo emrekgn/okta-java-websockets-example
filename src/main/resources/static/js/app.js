@@ -2,11 +2,11 @@ var stompClient = null;
 
 function connect() {
 
-    authClient.tokenManager.get('idToken').then(function(idToken){
-        if(idToken){
+    authClient.tokenManager.get('accessToken').then(function(accessToken){
+        if(accessToken){
             var socket = new SockJS('/looping');
             stompClient = Stomp.over(socket);
-            stompClient.connect({"X-Authorization": "Bearer " + idToken.idToken}, function (frame) {
+            stompClient.connect({"X-Authorization": "Bearer " + accessToken.accessToken}, function (frame) {
                 console.log('Connected: ' + frame);
                 stompClient.subscribe('/topic/loops', function (message) {
                     console.log(loopEvent);
@@ -27,6 +27,7 @@ function connect() {
             console.log("token expired");
         }
     })
+
 }
 
 
