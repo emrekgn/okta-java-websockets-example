@@ -32,24 +32,28 @@ Go to the Dashboard home and copy the **Org URL** from the top right corner.
 
 ### Update The Javascript ClientID
 
-Open the maven project and edit **resources/static/js/auth.js**. Update the **clientId** param in the client instantiation, setup the SPA clientId:
+Open the maven project and edit `src/main/resources/static/js/auth.js`. Update the **clientId** param in the client instantiation, setup the SPA clientId:
 
 ```Javascript
 var authClient = new OktaAuth({
-  url: '<org_url>',
-  clientId: '<spa_client_id>',
+  url: 'https://{yourOktaDomain}',
+  issuer: 'https://{yourOktaDomain}/oauth2/default',
+  clientId: '{yourClientID}',
   redirectUri: 'http://localhost:8080'
 });
 ```
 
+Edit `src/main/resources/application.yml` and update the issuer:
+
+```yml
+okta:
+  oauth2:
+    issuer: https://{yourOktaDomain}/oauth2/default
+```
 
 ### Run with Maven
 
 ```shell
-OKTA_CLIENT_ID=<service_client_id> \
-OKTA_CLIENT_SECRET=<service_client_secret> \
-OKTA_TOKEN_ENDPOINT_URL=<org_url>/oauth2/v1/introspect \
-OKTA_RESOURCE_ID=<org_url> \
 ./mvnw spring-boot:run
 ```
 
