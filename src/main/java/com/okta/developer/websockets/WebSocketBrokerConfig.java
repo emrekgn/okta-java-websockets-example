@@ -20,5 +20,4 @@ public class WebSocketBrokerConfig implements WebSocketMessageBrokerConfigurer {
         registry.addEndpoint("/looping")
                 .withSockJS();
     }
-
 }

@@ -13,8 +13,6 @@ import org.springframework.messaging.simp.stomp.StompCommand;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.messaging.support.ChannelInterceptor;
 import org.springframework.messaging.support.MessageHeaderAccessor;
-import org.springframework.security.authentication.AbstractAuthenticationToken;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
@@ -50,12 +48,9 @@ public class WebSocketAuthenticationConfig implements WebSocketMessageBrokerConf
                     JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
                     Authentication authentication = converter.convert(jwt);
                     accessor.setUser(authentication);
-
-
                 }
                 return message;
             }
         });
     }
-
 }

@@ -1,5 +1,6 @@
 var authClient = new OktaAuth({
   issuer: 'https://dev-239352.okta.com/oauth2/default',
+  url: 'https://dev-239352.okta.com',
   clientId: '0oa14trc2aHwBOide357',
   redirectUri: 'http://localhost:8080'
 });
