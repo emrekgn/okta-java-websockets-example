@@ -1,58 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Looping</title>
-    <script src="https://ok1static.oktacdn.com/assets/js/sdk/okta-auth-js/2.0.1/okta-auth-js.min.js" type="text/javascript"></script>
-    <script src="js/auth.js"></script>
-    <link href="webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script src="webjars/jquery/jquery.min.js"></script>
-    <script src="webjars/sockjs-client/sockjs.min.js"></script>
-    <script src="webjars/stomp-websocket/stomp.min.js"></script>
-    <script src="js/NexusUI.js"></script>
-    <script src="js/Tone.js"></script>
-    <script src="js/app.js"></script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.0.1/Tone.min.js"></script>-->
-    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
-    <style>
-        h1 {
-            font-family: 'Permanent Marker', cursive;
-        }
-    </style>
+  <title>Looping</title>
+  <script src="https://ok1static.oktacdn.com/assets/js/sdk/okta-auth-js/2.0.1/okta-auth-js.min.js" type="text/javascript"></script>
+  <script src="/js/auth.js"></script>
+  <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="/webjars/jquery/jquery.min.js"></script>
+  <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+  <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+  <script src="/js/NexusUI.js"></script>
+  <script src="/js/Tone.js"></script>
+  <script src="/js/app.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <style>
+    h1 {
+      font-family: 'Permanent Marker', cursive;
+    }
+  </style>
 </head>
 <body>
-<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
-    enabled. Please enable
-    Javascript and reload this page!</h2></noscript>
+<noscript>
+  <h2 style="color: #ff0000">It seems your browser doesn't support JavaScript! Websocket relies on JavaScript being enabled. Please enable JavaScript and reload this page!</h2>
+</noscript>
 <div id="main-content" class="container">
-    <div class="row my-2">
-        <div class="col-md-12 text-center">
-            <button id="connect" class="btn btn-primary" onclick="connect()" type="button">Connect</button>
-            <button id="disconnect" class="btn btn-primary" onclick="disconnect()" type="button">Disconnect</button>
-        </div>
+  <div class="row my-2">
+    <div class="col-md-12 text-center">
+      <button id="connect" class="btn btn-primary" onclick="connect()" type="button">Connect</button>
+      <button id="disconnect" class="btn btn-primary" onclick="disconnect()" type="button">Disconnect</button>
     </div>
-    <div class="row my-5"></div>
-    <div class="row my-2 justify-content-md-center">
-        <div class="col-md-12 text-center">
-            <h1>Loop me in</h1>
-        </div>
+  </div>
+  <div class="row my-5"></div>
+  <div class="row my-2 justify-content-md-center">
+    <div class="col-md-12 text-center">
+      <h1>Loop me in</h1>
     </div>
-    <div class="row justify-content-md-center my-2">
-        <div class="col col-lg-1 col-sm-2">
-        </div>
-        <div class="col-md-auto text-center">
-                <span id="button-1"></span>
-                <span id="button-2"></span>
-                <span id="button-3"></span>
-                <span id="button-4"></span>
-                <span id="button-5"></span>
-                <span id="button-6"></span>
-                <span id="button-7"></span>
-                <span id="button-8"></span>
-                <span id="button-9"></span>
-        </div>
-        <div class="col col-lg-1 col-sm-2">
-        </div>
+  </div>
+  <div class="row justify-content-md-center my-2">
+    <div class="col col-lg-1 col-sm-2">
     </div>
+    <div class="col-md-auto text-center">
+      <span id="button-1"></span>
+      <span id="button-2"></span>
+      <span id="button-3"></span>
+      <span id="button-4"></span>
+      <span id="button-5"></span>
+      <span id="button-6"></span>
+      <span id="button-7"></span>
+      <span id="button-8"></span>
+      <span id="button-9"></span>
+    </div>
+    <div class="col col-lg-1 col-sm-2">
+    </div>
+  </div>
 </div>
 <script src="/js/loop-ui.js"></script>
 </body>
